@@ -1,0 +1,335 @@
+.game-container {
+    display: flex;
+    height: 100vh;
+    background: var(--surface);
+}
+
+.board-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    overflow: auto;
+}
+
+.monopoly-board {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    grid-template-rows: repeat(11, 1fr);
+    width: 800px;
+    height: 800px;
+    background: var(--board-bg);
+    border: 4px solid var(--border);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    font-size: 0.8rem;
+    position: relative;
+}
+
+.center-area {
+    grid-column: 2 / 11;
+    grid-row: 2 / 11;
+    background: var(--board-center);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.board-logo {
+    font-size: 5rem;
+    font-weight: 900;
+    color: var(--surface);
+    letter-spacing: 0.5rem;
+    transform: rotate(-45deg);
+    opacity: 0.1;
+    user-select: none;
+    pointer-events: none;
+    position: absolute;
+}
+
+.board-space {
+    border: 1px solid #7f8c8d;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: white;
+    color: black;
+    box-sizing: border-box;
+}
+
+.board-space.corner {
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    background: #ecf0f1;
+}
+
+/* Orientation specific styles */
+.board-space.bottom {
+    flex-direction: column-reverse;
+    /* Color bar at top */
+    justify-content: space-between;
+    text-align: center;
+}
+
+.board-space.bottom .color-bar {
+    height: 20%;
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+
+.board-space.bottom .space-name {
+    padding-top: 5px;
+}
+
+.board-space.top {
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.board-space.top .color-bar {
+    height: 20%;
+    width: 100%;
+    border-top: 1px solid black;
+    order: 2;
+    /* Move to bottom visually if flex-direction is column? No, standard is color at bottom of cell for top row */
+}
+
+/* Actually top row faces down. Space name at top (closest to edge), color bar at bottom (closest to center) */
+/* My grid: Row 1 is top. */
+.board-space.top {
+    flex-direction: column;
+}
+
+.board-space.top .color-bar {
+    order: 10;
+    /* At bottom */
+}
+
+
+.board-space.left {
+    flex-direction: row-reverse;
+    /* Color bar at right */
+}
+
+.board-space.left .color-bar {
+    width: 20%;
+    height: 100%;
+}
+
+.board-space.left .space-name {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+.board-space.right {
+    flex-direction: row;
+}
+
+.board-space.right .color-bar {
+    width: 20%;
+    height: 100%;
+}
+
+.board-space.right .space-name {
+    writing-mode: vertical-rl;
+}
+
+.color-bar {
+    background: #ccc;
+}
+
+.color-bar.brown {
+    background: #795548;
+}
+
+.color-bar.lightblue {
+    background: #b3e5fc;
+}
+
+.color-bar.pink {
+    background: #f06292;
+}
+
+.color-bar.orange {
+    background: #ff9800;
+}
+
+.color-bar.red {
+    background: #f44336;
+}
+
+.color-bar.yellow {
+    background: #ffeb3b;
+}
+
+.color-bar.green {
+    background: #4caf50;
+}
+
+.color-bar.darkblue {
+    background: #2196f3;
+}
+
+.space-name {
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 2px;
+    z-index: 1;
+}
+
+.space-price {
+    font-size: 0.6rem;
+    padding: 2px;
+}
+
+.players-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    justify-content: center;
+}
+
+.owner-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 4px solid;
+    background: transparent !important;
+    /* Override inline background to be border-color if possible, or use logic */
+    pointer-events: none;
+    z-index: 4;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.player-panel {
+    width: 300px;
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    padding: 1rem;
+    color: white;
+}
+
+.player-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid transparent;
+}
+
+.player-card.active {
+    border-color: var(--primary);
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.player-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+}
+
+.dice-display {
+    display: flex;
+    gap: 1rem;
+    z-index: 10;
+}
+
+.die {
+    width: 50px;
+    height: 50px;
+    background: white;
+    color: black;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.action-button {
+    padding: 1rem 2rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    transition: transform 0.1s;
+}
+
+.action-button:active {
+    transform: scale(0.95);
+}
+
+.action-button.end-turn {
+    background: var(--accent);
+}
+
+.jail-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.jail-message {
+    color: #f44336;
+    font-weight: bold;
+}
+
+.buy-house-btn {
+    padding: 0.5rem;
+    background: #009688;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+.building-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+}
+
+.house-dot {
+    width: 8px;
+    height: 8px;
+    background: #4caf50;
+    /* Green house */
+    border: 1px solid white;
+}
+
+.house-dot:nth-child(5) {
+    background: #f44336;
+    /* Red hotel */
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+}
