@@ -18,59 +18,68 @@ export const Lobby: React.FC = () => {
     return (
         <div className="lobby-container">
             <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 30, scale: 0.97 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
                 className="lobby-card"
             >
-                <h1 className="lobby-title">Monopoly Live</h1>
+                <div className="lobby-logo">
+                    <div className="lobby-logo-text">
+                        <span className="logo-mono">MONO</span>
+                        <span className="logo-live">LIVE</span>
+                    </div>
+                </div>
+
                 <p className="lobby-subtitle">Enter your name and room to join</p>
 
                 <form onSubmit={handleJoin} className="lobby-form">
-                    <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="Your Name"
-                        className="lobby-input"
-                        autoFocus
-                    />
-                    <input
-                        type="text"
-                        value={roomId}
-                        onChange={(e) => setRoomId(e.target.value)}
-                        placeholder="Room ID"
-                        className="lobby-input"
-                        style={{ marginTop: '10px' }}
-                    />
+                    <div className="input-group">
+                        <span className="input-icon">👤</span>
+                        <input
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            placeholder="Your Name"
+                            className="lobby-input"
+                            autoFocus
+                        />
+                    </div>
+                    <div className="input-group">
+                        <span className="input-icon">🎮</span>
+                        <input
+                            type="text"
+                            value={roomId}
+                            onChange={(e) => setRoomId(e.target.value)}
+                            placeholder="Room ID"
+                            className="lobby-input"
+                        />
+                    </div>
+
                     <motion.button
                         whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
+                        whileTap={{ scale: 0.97 }}
                         type="submit"
                         className="lobby-button"
                         disabled={!name.trim() || !roomId.trim()}
                     >
-                        Join Game
+                        Join Game →
                     </motion.button>
                 </form>
 
                 {rooms.length > 0 && (
-                    <div style={{ marginTop: '20px', textAlign: 'left' }}>
-                        <h3>Active Rooms:</h3>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                    <div className="active-rooms">
+                        <div className="active-rooms-title">Active Rooms</div>
+                        <div className="rooms-grid">
                             {rooms.map(r => (
-                                <span
+                                <motion.button
                                     key={r}
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
                                     onClick={() => setRoomId(r)}
-                                    style={{
-                                        background: 'rgba(255,255,255,0.1)',
-                                        padding: '5px 10px',
-                                        borderRadius: '5px',
-                                        cursor: 'pointer',
-                                        border: '1px solid rgba(255,255,255,0.2)'
-                                    }}
+                                    className="room-chip"
                                 >
                                     {r}
-                                </span>
+                                </motion.button>
                             ))}
                         </div>
                     </div>

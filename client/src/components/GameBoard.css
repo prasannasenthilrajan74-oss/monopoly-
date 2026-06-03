@@ -1,87 +1,638 @@
-.game-container {
+/* ═══════════════════════════════════════════════
+   RICHUP.IO STYLE LAYOUT
+   ═══════════════════════════════════════════════ */
+
+.richup-layout {
     display: flex;
     height: 100vh;
-    background: var(--surface);
+    width: 100vw;
+    overflow: hidden;
+    background: #12102a;
+    color: #e2e8f0;
+    font-family: 'Outfit', sans-serif;
 }
 
-.board-wrapper {
+/* ═══════════════════════════════════════════════
+   LEFT SIDEBAR
+   ═══════════════════════════════════════════════ */
+
+.left-sidebar {
+    width: 240px;
+    min-width: 240px;
+    background: #1a1835;
+    border-right: 1px solid rgba(255, 255, 255, 0.07);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    overflow: hidden;
+}
+
+.sidebar-logo {
+    padding: 1.25rem 1.25rem 1rem;
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.logo-rich {
+    color: #e2e8f0;
+}
+
+.logo-up {
+    color: #60a5fa;
+}
+
+.logo-dot {
+    color: #60a5fa;
+    font-size: 0.6rem;
+    vertical-align: super;
+}
+
+.share-section {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.share-label {
+    font-size: 0.78rem;
+    color: #94a3b8;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.info-icon {
+    color: #64748b;
+    font-size: 0.75rem;
+}
+
+.share-link-row {
+    display: flex;
+    gap: 6px;
+}
+
+.share-link-box {
+    flex: 1;
+    background: #0f0e23;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    overflow: hidden;
+}
+
+.share-link-text {
+    font-size: 0.72rem;
+    color: #7dd3fc;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+.copy-btn {
+    background: rgba(96, 165, 250, 0.15);
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    color: #60a5fa;
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.72rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+}
+
+.copy-btn:hover {
+    background: rgba(96, 165, 250, 0.25);
+}
+
+.ad-placeholder {
+    flex: 0 0 auto;
+    min-height: 120px;
+    background: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.ad-label {
+    font-size: 0.7rem;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.chat-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 1rem 1.25rem;
+    gap: 0.75rem;
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #cbd5e1;
+}
+
+.chat-icon {
+    font-size: 0.9rem;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: #334155 transparent;
+}
+
+.no-messages {
+    color: #475569;
+    font-size: 0.78rem;
+    text-align: center;
+    margin-top: 20px;
+    font-style: italic;
+}
+
+.chat-msg {
+    font-size: 0.78rem;
+    line-height: 1.4;
+    padding: 3px 0;
+}
+
+.chat-sender {
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+
+.chat-text {
+    color: #cbd5e1;
+}
+
+.chat-input-row {
+    display: flex;
+    gap: 6px;
+}
+
+.chat-input {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    color: white;
+    font-size: 0.8rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.chat-input:focus {
+    border-color: rgba(96, 165, 250, 0.5);
+}
+
+.chat-input::placeholder {
+    color: #475569;
+}
+
+.chat-send-btn {
+    background: rgba(96, 165, 250, 0.2);
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    border-radius: 8px;
+    color: #60a5fa;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+}
+
+.chat-send-btn:hover {
+    background: rgba(96, 165, 250, 0.35);
+}
+
+/* ═══════════════════════════════════════════════
+   CENTER BOARD
+   ═══════════════════════════════════════════════ */
+
+.board-main {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
-    overflow: auto;
+    background: radial-gradient(ellipse at center, #1e1a40 0%, #12102a 70%);
+    overflow: hidden;
+    position: relative;
+}
+
+.board-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
 }
 
 .monopoly-board {
     display: grid;
-    grid-template-columns: repeat(11, 1fr);
-    grid-template-rows: repeat(11, 1fr);
-    width: 800px;
-    height: 800px;
-    background: var(--board-bg);
-    border: 4px solid var(--border);
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    grid-template-columns: 80px repeat(9, 1fr) 80px;
+    grid-template-rows: 80px repeat(9, 1fr) 80px;
+    width: min(calc(100vh - 2rem), 700px);
+    height: min(calc(100vh - 2rem), 700px);
+    background: #ecf3eb;
+    border: 3px solid #2d3748;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.8), 0 0 120px rgba(96, 165, 250, 0.1);
     font-size: 0.8rem;
     position: relative;
+    border-radius: 4px;
 }
 
 .center-area {
     grid-column: 2 / 11;
     grid-row: 2 / 11;
-    background: var(--board-center);
+    background: linear-gradient(135deg, #d4edd6 0%, #cce5ff 50%, #e8d4f0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.center-area::before {
+    content: 'MONOPOLY';
+    position: absolute;
+    font-size: 5rem;
+    font-weight: 900;
+    color: rgba(0, 0, 0, 0.04);
+    transform: rotate(-45deg);
+    letter-spacing: 0.5rem;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.center-inner {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.2rem;
+    z-index: 2;
+    padding: 1rem;
 }
 
-.board-logo {
-    font-size: 5rem;
-    font-weight: 900;
-    color: var(--surface);
-    letter-spacing: 0.5rem;
-    transform: rotate(-45deg);
-    opacity: 0.1;
-    user-select: none;
-    pointer-events: none;
-    position: absolute;
+/* ═══════════════════════════════════════════════
+   WAITING STATE
+   ═══════════════════════════════════════════════ */
+
+.waiting-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
+
+.waiting-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.waiting-dots span {
+    width: 10px;
+    height: 10px;
+    background: #2563eb;
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out;
+}
+
+.waiting-dots span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.waiting-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.waiting-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0.7);
+        opacity: 0.5;
+    }
+
+    40% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+.waiting-label {
+    font-size: 0.9rem;
+    color: #4b5563;
+    font-weight: 600;
+}
+
+.joined-label {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.start-game-btn {
+    padding: 0.75rem 2rem;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.5);
+    font-family: inherit;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+}
+
+.start-game-btn:hover {
+    box-shadow: 0 6px 30px rgba(99, 102, 241, 0.7);
+}
+
+/* ═══════════════════════════════════════════════
+   3D DICE
+   ═══════════════════════════════════════════════ */
+
+.dice-display {
+    display: flex;
+    gap: 1.5rem;
+    perspective: 600px;
+}
+
+.die-3d {
+    width: 70px;
+    height: 70px;
+    background: white;
+    border-radius: 12px;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.4),
+        inset 0 -4px 0 rgba(0, 0, 0, 0.15),
+        0 0 0 2px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.die-3d.die-idle {
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.35),
+        inset 0 -3px 0 rgba(0, 0, 0, 0.12),
+        0 0 0 1px rgba(0, 0, 0, 0.08),
+        0 0 20px rgba(96, 165, 250, 0.08);
+}
+
+.dice-face {
+    width: 70px;
+    height: 70px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: 10px;
+    box-sizing: border-box;
+    gap: 0;
+}
+
+.dot-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dot-filled::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #1e1a40;
+    border-radius: 50%;
+    display: block;
+}
+
+/* ═══════════════════════════════════════════════
+   ACTION ZONE
+   ═══════════════════════════════════════════════ */
+
+.action-zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.roll-btn {
+    padding: 0.7rem 2rem;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.5);
+    font-family: inherit;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+}
+
+.roll-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 30px rgba(99, 102, 241, 0.7);
+}
+
+.end-turn-btn {
+    padding: 0.6rem 1.5rem;
+    background: linear-gradient(135deg, #f59e0b, #f97316);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+}
+
+.end-turn-btn:hover {
+    transform: scale(1.05);
+}
+
+.buy-btn {
+    padding: 0.6rem 1.5rem;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+}
+
+.jail-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.jail-msg {
+    color: #ef4444;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.acting-zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.timer-ring {
+    position: relative;
+    width: 56px;
+    height: 56px;
+}
+
+.timer-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.timer-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.house-btn {
+    padding: 0.4rem 0.9rem;
+    background: rgba(16, 185, 129, 0.2);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    color: #10b981;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+}
+
+.not-my-turn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.turn-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #374151;
+    font-weight: 600;
+}
+
+.turn-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: pulse-dot 1.5s infinite;
+}
+
+@keyframes pulse-dot {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.3);
+        opacity: 0.7;
+    }
+}
+
+.last-action-pill {
+    background: rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    color: #374151;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    text-align: center;
+    max-width: 280px;
+    font-weight: 500;
+}
+
+/* ═══════════════════════════════════════════════
+   BOARD SPACES
+   ═══════════════════════════════════════════════ */
 
 .board-space {
-    border: 1px solid #7f8c8d;
+    border: 1px solid #9ca3af;
     display: flex;
     flex-direction: column;
     position: relative;
     background: white;
-    color: black;
+    color: #111;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .board-space.corner {
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    background: #ecf0f1;
+    background: #e8f4ec;
+    font-size: 0.6rem;
+    text-align: center;
 }
 
-/* Orientation specific styles */
 .board-space.bottom {
     flex-direction: column-reverse;
-    /* Color bar at top */
     justify-content: space-between;
     text-align: center;
 }
 
 .board-space.bottom .color-bar {
-    height: 20%;
+    height: 22%;
     width: 100%;
-    border-bottom: 1px solid black;
-}
-
-.board-space.bottom .space-name {
-    padding-top: 5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .board-space.top {
@@ -91,33 +642,20 @@
 }
 
 .board-space.top .color-bar {
-    height: 20%;
+    height: 22%;
     width: 100%;
-    border-top: 1px solid black;
-    order: 2;
-    /* Move to bottom visually if flex-direction is column? No, standard is color at bottom of cell for top row */
-}
-
-/* Actually top row faces down. Space name at top (closest to edge), color bar at bottom (closest to center) */
-/* My grid: Row 1 is top. */
-.board-space.top {
-    flex-direction: column;
-}
-
-.board-space.top .color-bar {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
     order: 10;
-    /* At bottom */
 }
-
 
 .board-space.left {
     flex-direction: row-reverse;
-    /* Color bar at right */
 }
 
 .board-space.left .color-bar {
-    width: 20%;
+    width: 22%;
     height: 100%;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .board-space.left .space-name {
@@ -130,8 +668,9 @@
 }
 
 .board-space.right .color-bar {
-    width: 20%;
+    width: 22%;
     height: 100%;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .board-space.right .space-name {
@@ -140,18 +679,19 @@
 
 .color-bar {
     background: #ccc;
+    position: relative;
 }
 
 .color-bar.brown {
-    background: #795548;
+    background: #8d5524;
 }
 
 .color-bar.lightblue {
-    background: #b3e5fc;
+    background: #7ec8e3;
 }
 
 .color-bar.pink {
-    background: #f06292;
+    background: #e91e8c;
 }
 
 .color-bar.orange {
@@ -159,31 +699,33 @@
 }
 
 .color-bar.red {
-    background: #f44336;
+    background: #e53935;
 }
 
 .color-bar.yellow {
-    background: #ffeb3b;
+    background: #fdd835;
 }
 
 .color-bar.green {
-    background: #4caf50;
+    background: #43a047;
 }
 
 .color-bar.darkblue {
-    background: #2196f3;
+    background: #1565c0;
 }
 
 .space-name {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     font-weight: 600;
-    padding: 2px;
+    padding: 2px 1px;
+    line-height: 1.2;
     z-index: 1;
 }
 
 .space-price {
-    font-size: 0.6rem;
-    padding: 2px;
+    font-size: 0.55rem;
+    padding: 1px;
+    color: #4b5563;
 }
 
 .players-container {
@@ -195,6 +737,15 @@
     flex-wrap: wrap;
     gap: 2px;
     justify-content: center;
+    z-index: 5;
+}
+
+.player-token {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .owner-indicator {
@@ -203,109 +754,11 @@
     left: 0;
     right: 0;
     bottom: 0;
-    border: 4px solid;
+    border: 3px solid;
     background: transparent !important;
-    /* Override inline background to be border-color if possible, or use logic */
     pointer-events: none;
     z-index: 4;
     box-sizing: border-box;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.player-panel {
-    width: 300px;
-    background: var(--surface);
-    border-left: 1px solid var(--border);
-    padding: 1rem;
-    color: white;
-}
-
-.player-card {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 0.5rem;
-    margin-bottom: 0.5rem;
-    border: 1px solid transparent;
-}
-
-.player-card.active {
-    border-color: var(--primary);
-    background: rgba(59, 130, 246, 0.1);
-}
-
-.player-color {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-}
-
-.dice-display {
-    display: flex;
-    gap: 1rem;
-    z-index: 10;
-}
-
-.die {
-    width: 50px;
-    height: 50px;
-    background: white;
-    color: black;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.action-button {
-    padding: 1rem 2rem;
-    background: var(--primary);
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
-    font-size: 1.2rem;
-    cursor: pointer;
-    font-weight: bold;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    z-index: 10;
-    transition: transform 0.1s;
-}
-
-.action-button:active {
-    transform: scale(0.95);
-}
-
-.action-button.end-turn {
-    background: var(--accent);
-}
-
-.jail-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: center;
-}
-
-.jail-message {
-    color: #f44336;
-    font-weight: bold;
-}
-
-.buy-house-btn {
-    padding: 0.5rem;
-    background: #009688;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    cursor: pointer;
-    margin-top: 0.5rem;
-    width: 100%;
 }
 
 .building-indicator {
@@ -316,20 +769,289 @@
     display: flex;
     justify-content: center;
     gap: 2px;
+    z-index: 3;
 }
 
 .house-dot {
-    width: 8px;
-    height: 8px;
-    background: #4caf50;
-    /* Green house */
+    width: 7px;
+    height: 7px;
+    background: #22c55e;
     border: 1px solid white;
+    display: inline-block;
 }
 
 .house-dot:nth-child(5) {
-    background: #f44336;
-    /* Red hotel */
-    width: 12px;
-    height: 12px;
+    background: #ef4444;
+    width: 10px;
+    height: 10px;
     border-radius: 2px;
+}
+
+/* ═══════════════════════════════════════════════
+   RIGHT SIDEBAR
+   ═══════════════════════════════════════════════ */
+
+.right-sidebar {
+    width: 260px;
+    min-width: 260px;
+    background: #1a1835;
+    border-left: 1px solid rgba(255, 255, 255, 0.07);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #2d3748 transparent;
+}
+
+.my-player-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.my-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+.my-player-info {
+    flex: 1;
+    overflow: hidden;
+}
+
+.my-player-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.my-player-money {
+    font-size: 0.8rem;
+    color: #34d399;
+    font-weight: 600;
+}
+
+.players-panel {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.panel-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+}
+
+.player-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.player-card-rich {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.5rem 0.7rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.player-card-rich.active {
+    border-color: rgba(99, 102, 241, 0.5);
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.pc-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+}
+
+.pc-info {
+    flex: 1;
+    overflow: hidden;
+}
+
+.pc-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.you-tag {
+    font-size: 0.6rem;
+    background: rgba(99, 102, 241, 0.3);
+    color: #a5b4fc;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.pc-money {
+    font-size: 0.72rem;
+    color: #34d399;
+    font-weight: 600;
+}
+
+.turn-arrow {
+    color: #6366f1;
+    font-size: 0.75rem;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.2;
+    }
+}
+
+/* ═══════════════════════════════════════════════
+   SETTINGS PANEL
+   ═══════════════════════════════════════════════ */
+
+.settings-panel {
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.settings-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #7dd3fc;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.3px;
+}
+
+.rules-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #7dd3fc;
+    margin: 1rem 0 0.75rem;
+}
+
+.setting-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.setting-icon {
+    font-size: 1rem;
+    width: 24px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.setting-label {
+    flex: 1;
+    overflow: hidden;
+}
+
+.setting-name {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.setting-desc {
+    font-size: 0.65rem;
+    color: #64748b;
+    margin-top: 1px;
+}
+
+.setting-value {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    background: rgba(255, 255, 255, 0.07);
+    padding: 3px 10px;
+    border-radius: 6px;
+}
+
+.toggle-switch {
+    width: 36px;
+    height: 20px;
+    background: #334155;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.2s;
+}
+
+.toggle-switch::after {
+    content: '';
+    width: 14px;
+    height: 14px;
+    background: #64748b;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    transition: all 0.2s;
+}
+
+.toggle-switch.active {
+    background: #4f46e5;
+}
+
+.toggle-switch.active::after {
+    background: white;
+    left: 19px;
+}
+
+.beta-tag {
+    font-size: 0.55rem;
+    background: rgba(251, 191, 36, 0.2);
+    color: #fbbf24;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
